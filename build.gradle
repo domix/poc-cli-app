@@ -31,6 +31,7 @@ dependencies {
     implementation("javax.annotation:javax.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
     testImplementation("io.micronaut:micronaut-http-client")
+    implementation 'com.diogonunes:JColor:5.0.1'
 }
 
 mainClassName = "domix.cli.poc.AppCommand"

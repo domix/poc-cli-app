@@ -1,9 +1,13 @@
 package domix.cli.poc.commands;
 
+import com.diogonunes.jcolor.AnsiFormat;
 import picocli.CommandLine;
 
 import java.util.List;
 import java.util.concurrent.Callable;
+
+import static com.diogonunes.jcolor.Attribute.GREEN_TEXT;
+import static com.diogonunes.jcolor.Attribute.YELLOW_TEXT;
 
 @CommandLine.Command(
     name = "mapper",
@@ -30,8 +34,12 @@ public class MapperCommand implements Callable<Void> {
     public Void call() throws Exception {
 
         if (verbose) {
-            System.out.printf("Making request to %s:%d%n", host, port);
-            System.out.printf("Service to call: %s%n", serviceName);
+            AnsiFormat fNormal = new AnsiFormat(GREEN_TEXT());
+            AnsiFormat fNormasl = new AnsiFormat(YELLOW_TEXT());
+            String format = String.format("Making request to %s:%d", host, port);
+
+            System.out.println(fNormal.format(format));
+            System.out.println(fNormal.format("Calling service: ") + fNormasl.format(serviceName));
             System.out.println(data);
         }
 
